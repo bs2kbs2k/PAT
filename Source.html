@@ -3,7 +3,7 @@
 <!--first to be injected. The controls.-->
 <div style="color: white;">
     <h2>Chat Height</h2>
-    <input type="number" maxlength="100" id="height" style="width: 90%; height: 5%;" autocomplete="off" min="0" value="1" onchange="document.getElementById('overlay').style.height = document.getElementById('height').value+'px'">
+    <input type="number" maxlength="100" id="height" style="width: 90%; height: 5%;" autocomplete="off" min="0" value="1" onchange="document.getElementById('chat').style.height = document.getElementById('height').value+'px'">
     <h2>Overlay Opacity</h2>
     <input type="range" min="1" max="100" value="50" class="slider" id="opacity" onchange="document.getElementById('overlay').style.opacity = document.getElementById('opacity').value/100">
     <br>
