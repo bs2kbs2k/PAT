@@ -6,7 +6,7 @@
 // @include        https://pixelanarchy.online/*
 // @match          http://pixelanarchy.online/*
 // @match          https://pixelanarchy.online/*
-// @version        0.5.0
+// @version        0.5.1
 // ==/UserScript==
 
 document.getElementById('brushsize2').parentElement.children[10].insertAdjacentHTML('afterend',`
@@ -18,7 +18,7 @@ document.getElementById('brushsize2').parentElement.children[10].insertAdjacentH
     <br>
     <h2>Overlay Image</h2>
     <input id="url" style="width: 90%; height: 5%;" autocomplete="off" onchange="document.getElementById('overlay').src = document.getElementById('url').value">
-    <input type="file" id="file" style="width: 90%; height: 5%;" accept="image/*" onchange="document.getElementById('overlay').src = URL.createObjectURL(document.getElementById('file').files[0])">
+    <input type="file" id="file" style="width: 90%; height: 5%;" accept="image/*" onchange="document.getElementById('overlay').src = window.URL.createObjectURL(document.getElementById('file').files[0])">
     <br>
     <h2>Overlay Position</h2>
     <input type="number" maxlength="100" id="x" style="width: 90%; height: 5%;" autocomplete="off" min="0" value="0" step="1" max="5759" onchange="document.getElementById('overlay').style.left = document.getElementById('x').value+'px'">
