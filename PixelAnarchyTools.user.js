@@ -62,7 +62,7 @@ pixelCtx.fillStyle = "#FFFFFF";
 		pixelCtx.lineTo(2,1);
 		pixelCtx.stroke();
 		pixelCtx.fill();
-		document.getElementById("myCanvas").style.cursor = 'url(' + pixelPreviewCanvas.toDataURL() + '), auto';
+		document.getElementById("myCanvas").style.cursor = 'url(' + document.getElementById('cursor').toDataURL() + '), auto';
     
 		}
 	})
@@ -78,7 +78,7 @@ document.getElementById('cursorColor').addEventListener('change', (event) => {
     pixelCtx.lineTo(2,1);
     pixelCtx.stroke();
     pixelCtx.fill();
-    document.getElementById("myCanvas").style.cursor = 'url(' + pixelPreviewCanvas.toDataURL() + '), auto';
+    document.getElementById("myCanvas").style.cursor = 'url(' + document.getElementById('cursor').toDataURL() + '), auto';
   } else {
     document.getElementById("myCanvas").style.cursor = "crosshair";
     window.pixelPreviewEnabled = false;
