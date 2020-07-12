@@ -6,7 +6,7 @@
 // @include        https://pixelanarchy.online/*
 // @match          http://pixelanarchy.online/*
 // @match          https://pixelanarchy.online/*
-// @version        0.6.1
+// @version        0.6.2
 // ==/UserScript==
 
 document.getElementById('brushsize2').parentElement.children[10].insertAdjacentHTML('afterend',`
@@ -31,4 +31,4 @@ document.getElementById('brushsize2').parentElement.children[10].insertAdjacentH
     <input id="difference" type="checkbox" onchange="document.getElementById(\'overlay\').style['mix-blend-mode'] = document.getElementById('difference').checked ? 'difference':'unset'"> Difference blend
     <br>
 </div>`);
-document.getElementById('myCanvas').insertAdjacentHTML('afterend',`<img style="pointer-events: none; position: relative; top: -3240px; left: 0px; opacity: 0.5; image-rendering: pixelated;" src="" id="overlay">`);
+document.getElementById('myCanvas').insertAdjacentHTML('afterend',`<img style="pointer-events: none; position: relative; top: -3240px; left: 0px; opacity: 0.5; image-rendering: pixelated; image-rendering: crisp-edges;" src="" id="overlay">`);
