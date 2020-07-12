@@ -6,7 +6,7 @@
 // @include        https://pixelanarchy.online/*
 // @match          http://pixelanarchy.online/*
 // @match          https://pixelanarchy.online/*
-// @version        0.7.3
+// @version        0.8.0
 // ==/UserScript==
 
 document.getElementById('brushsize2').parentElement.children[10].insertAdjacentHTML('afterend',`
@@ -33,8 +33,14 @@ document.getElementById('brushsize2').parentElement.children[10].insertAdjacentH
     <h2>Cursor Color</h2>
     <input id="cursorColor" type="checkbox"> Selected color
     <br>
+    <h2>Ruler</h2>
+    <input id="rulerStart" type="checkbox"> Use ruler
+    <br>
+    <div id="rulerResult">Dimensions: undefined</div>
+    <br>
 </div>`);
 document.getElementById('myCanvas').insertAdjacentHTML('afterend',`<img style="pointer-events: none; position: relative; top: -3240px; left: 0px; opacity: 0.5; image-rendering: pixelated; image-rendering: crisp-edges;" src="" id="overlay">`);
+document.getElementById('myCanvas').insertAdjacentHTML('afterend',`<canvas width="5760" height="3240" style="pointer-events: none; position: absolute; top: 0px; left: 0px; image-rendering: pixelated; image-rendering: crisp-edges;" id="ruler">`);
 document.getElementById('myCanvas').insertAdjacentHTML('afterend',`<canvas id="cursor" width="40" height="40" style="display: none;">`);
 document.getElementById('logout').insertAdjacentHTML('afterend',`<br> <p style="color: white;">You're using bs2k's script.</p>`);
 let pixelCtx = document.getElementById('cursor').getContext('2d');
@@ -83,5 +89,36 @@ document.getElementById('cursorColor').addEventListener('change', (event) => {
   } else {
     document.getElementById("myCanvas").style.cursor = "crosshair";
     window.pixelPreviewEnabled = false;
+  }
+});
+
+document.getElementById('rulerStart').addEventListener('change', (event) => {
+  if (event.target.checked) {
+    document.getElementById("ruler").style["pointer-events"] = "unset";
+    window.isFirstClick = true
+  } else {
+    document.getElementById("ruler").style["pointer-events"] = "none";
+  }
+});
+
+document.getElementById('ruler').addEventListener('click', (event) => {
+  coords = document.getElementById('coords').innerText.split(' ')
+  event.preventDefault();
+  if (window.isFirstClick) {
+    window.firstX = coords[2] - 0;
+    window.firstY = coords[5] - 0;
+    window.isFirstClick = false;
+    var c = document.getElementById("ruler");
+    var ctx = c.getContext("2d");
+    ctx.fillStyle = "gray";
+    ctx.fillRect(window.firstX,window.firstY,1,1);
+  } else {
+    window.secondX = coords[2] - 0;
+    window.secondY = coords[5] - 0;
+    var c = document.getElementById("ruler");
+    var ctx = c.getContext("2d");
+    ctx.clearRect(0, 0, 5760, 3240);
+    document.getElementById("rulerStart").checked = false;
+    document.getElementById("rulerResult").innerText = 'Dimensions: '+(Math.abs(window.firstX - window.secondX)+1)+' x '+(Math.abs(window.firstY - window.secondY)+1)
   }
 });
