@@ -6,7 +6,7 @@
 // @include        https://pixelanarchy.online/*
 // @match          http://pixelanarchy.online/*
 // @match          https://pixelanarchy.online/*
-// @version        0.7.2
+// @version        0.7.3
 // ==/UserScript==
 
 document.getElementById('brushsize2').parentElement.children[10].insertAdjacentHTML('afterend',`
@@ -36,6 +36,7 @@ document.getElementById('brushsize2').parentElement.children[10].insertAdjacentH
 </div>`);
 document.getElementById('myCanvas').insertAdjacentHTML('afterend',`<img style="pointer-events: none; position: relative; top: -3240px; left: 0px; opacity: 0.5; image-rendering: pixelated; image-rendering: crisp-edges;" src="" id="overlay">`);
 document.getElementById('myCanvas').insertAdjacentHTML('afterend',`<canvas id="cursor" width="40" height="40" style="display: none;">`);
+document.getElementById('logout').insertAdjacentHTML('afterend',`<br> <p style="color: white;">You're using bs2k's script.</p>`);
 let pixelCtx = document.getElementById('cursor').getContext('2d');
 pixelCtx.strokeStyle = "gray";
 pixelCtx.lineWidth = 2;
