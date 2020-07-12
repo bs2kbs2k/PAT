@@ -6,7 +6,7 @@
 // @include        https://pixelanarchy.online/*
 // @match          http://pixelanarchy.online/*
 // @match          https://pixelanarchy.online/*
-// @version        0.7.0
+// @version        0.7.1
 // ==/UserScript==
 
 document.getElementById('brushsize2').parentElement.children[10].insertAdjacentHTML('afterend',`
@@ -42,7 +42,7 @@ pixelCtx.lineWidth = 2;
 pixelCtx.fillStyle = "#FFFFFF";
 [...document.getElementsByClassName('btnbelow')].forEach(function(elem){
     elem.addEventListener('click',function(e){
-	if (pixelPreviewEnabled){
+	if (window.pixelPreviewEnabled){
 		if (e.srcElement.id == "mix"){
 			var gradient = pixelCtx.createLinearGradient(0, 0, 30, 0);
 			gradient.addColorStop(0, 'red');
@@ -68,10 +68,10 @@ pixelCtx.fillStyle = "#FFFFFF";
 	})
 })
 
-pixelPreview.addEventListener('change', (event) => {
+document.getElementById('cursorColor').addEventListener('change', (event) => {
   if (event.target.checked) {
     document.getElementById("myCanvas").style.cursor = "";
-    pixelPreviewEnabled = true;
+    window.pixelPreviewEnabled = true;
     pixelCtx.moveTo(2,2);
     pixelCtx.lineTo(18,20);
     pixelCtx.lineTo(2,26);
@@ -81,6 +81,6 @@ pixelPreview.addEventListener('change', (event) => {
     document.getElementById("myCanvas").style.cursor = 'url(' + pixelPreviewCanvas.toDataURL() + '), auto';
   } else {
     document.getElementById("myCanvas").style.cursor = "crosshair";
-    pixelPreviewEnabled = false;
+    window.pixelPreviewEnabled = false;
   }
 });
