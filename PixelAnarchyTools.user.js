@@ -6,7 +6,7 @@
 // @include        https://pixelanarchy.online/*
 // @match          http://pixelanarchy.online/*
 // @match          https://pixelanarchy.online/*
-// @version        0.8.0
+// @version        0.8.1
 // ==/UserScript==
 
 document.getElementById('brushsize2').parentElement.children[10].insertAdjacentHTML('afterend',`
@@ -98,6 +98,9 @@ document.getElementById('rulerStart').addEventListener('change', (event) => {
     window.isFirstClick = true
   } else {
     document.getElementById("ruler").style["pointer-events"] = "none";
+    var c = document.getElementById("ruler");
+    var ctx = c.getContext("2d");
+    ctx.clearRect(0, 0, 5760, 3240);
   }
 });
 
