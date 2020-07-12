@@ -6,7 +6,7 @@
 // @include        https://pixelanarchy.online/*
 // @match          http://pixelanarchy.online/*
 // @match          https://pixelanarchy.online/*
-// @version        0.5.3
+// @version        0.6.0
 // ==/UserScript==
 
 document.getElementById('brushsize2').parentElement.children[10].insertAdjacentHTML('afterend',`
@@ -26,6 +26,9 @@ document.getElementById('brushsize2').parentElement.children[10].insertAdjacentH
     <br>
     <h2>Overlay Width</h2>
     <input type="number" maxlength="100" id="scale" style="width: 90%; height: 5%;" autocomplete="off" min="0" value="1" onchange="document.getElementById('overlay').style.width = document.getElementById('scale').value+'px'">
+    <br>
+    <h2>Overlay Mode</h2>
+    <input id="difference" type="checkbox" onchange="document.getElementById(\'overlay\').style['mix-blend-mode'] = document.getElementById('difference').checked ? 'unset':'difference'"> Difference blend
     <br>
 </div>`);
 document.getElementById('myCanvas').insertAdjacentHTML('afterend',`<img style="pointer-events: none; position: relative; top: -3240px; left: 0px; opacity: 0.5; image-rendering: pixelated;" src="" id="overlay">`);

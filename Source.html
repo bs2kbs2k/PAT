@@ -18,4 +18,7 @@
     <h2>Overlay Width</h2>
     <input type="number" maxlength="100" id="scale" style="width: 90%; height: 5%;" autocomplete="off" min="0" value="1" onchange="document.getElementById('overlay').style.width = document.getElementById('scale').value+'px'">
     <br>
+    <h2>Overlay Mode</h2>
+    <input id="difference" type="checkbox" onchange="document.getElementById(\'overlay\').style['mix-blend-mode'] = document.getElementById('difference').checked ? 'unset':'difference'"> Difference blend
+    <br>
 </div>
