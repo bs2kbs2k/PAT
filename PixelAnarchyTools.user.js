@@ -6,7 +6,7 @@
 // @include        https://pixelanarchy.online/*
 // @match          http://pixelanarchy.online/*
 // @match          https://pixelanarchy.online/*
-// @version        0.9.1
+// @version        0.9.2
 // ==/UserScript==
 
 document.getElementById('brushsize2').parentElement.children[10].insertAdjacentHTML('afterend',`
@@ -122,6 +122,7 @@ document.getElementById('ruler').addEventListener('click', (event) => {
     var ctx = c.getContext("2d");
     ctx.clearRect(0, 0, 5760, 3240);
     document.getElementById("rulerStart").checked = false;
+    document.getElementById("ruler").style["pointer-events"] = "none";
     document.getElementById("rulerResult").innerText = 'Dimensions: '+(Math.abs(window.firstX - window.secondX)+1)+' x '+(Math.abs(window.firstY - window.secondY)+1)
   }
 });
