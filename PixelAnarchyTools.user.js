@@ -6,7 +6,7 @@
 // @include        https://pixelanarchy.online/*
 // @match          http://pixelanarchy.online/*
 // @match          https://pixelanarchy.online/*
-// @version        0.8.1
+// @version        0.9.0
 // ==/UserScript==
 
 document.getElementById('brushsize2').parentElement.children[10].insertAdjacentHTML('afterend',`
@@ -125,3 +125,32 @@ document.getElementById('ruler').addEventListener('click', (event) => {
     document.getElementById("rulerResult").innerText = 'Dimensions: '+(Math.abs(window.firstX - window.secondX)+1)+' x '+(Math.abs(window.firstY - window.secondY)+1)
   }
 });
+
+//horrible hack(s)
+window.secondColor = {style:{}};
+window.firstColor = {click:function(){}};
+
+[...document.getElementsByClassName('btnbelow')].forEach(function(elem){
+  elem.addEventListener('contextmenu',function(e){
+    e.preventDefault();
+    window.secondColor.style["border-color"] = 'unset';
+    window.secondColor = e.srcElement;
+    e.srcElement.style["border-color"] = 'gray';
+  })
+  elem.addEventListener('click',function(e){
+    if (e.isTrusted){
+      window.firstColor = e.srcElement;
+      window.secondColor.style["border-color"] = 'gray';
+    }
+  })
+})
+
+document.getElementById('myCanvas').addEventListener('contextmenu',function(e){
+  e.preventDefault();
+  window.secondColor.click();
+  window.secondColor.style["border-color"] = 'gray';
+  setTimeout(function(){
+    window.firstColor.click();
+    window.secondColor.style["border-color"] = 'gray';
+  },300)
+})
