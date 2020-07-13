@@ -13,7 +13,7 @@ document.getElementById('brushsize2').parentElement.children[10].insertAdjacentH
 <div style="color: white;">
     <h2>Chat Height</h2>
     <input type="number" maxlength="100" id="height" style="width: 90%; height: 5%;" autocomplete="off" min="0" value="1" onchange="document.getElementById('messages').style.height = document.getElementById('height').value+'px'">
-    <h2>Overlay Opacity</h2>
+    <!--h2>Overlay Opacity</h2>
     <input type="range" min="1" max="100" value="50" class="slider" id="opacity" onchange="document.getElementById('overlay').style.opacity = document.getElementById('opacity').value/100">
     <br>
     <h2>Overlay Image</h2>
@@ -25,7 +25,7 @@ document.getElementById('brushsize2').parentElement.children[10].insertAdjacentH
     <input type="number" maxlength="100" id="y" style="width: 90%; height: 5%;" autocomplete="off" min="0" value="0" step="1" max="3239" onchange="document.getElementById('overlay').style.top = document.getElementById('y').value-3240+'px'">
     <br>
     <h2>Overlay Width</h2>
-    <input type="number" maxlength="100" id="scale" style="width: 90%; height: 5%;" autocomplete="off" min="0" value="1" onchange="document.getElementById('overlay').style.width = document.getElementById('scale').value+'px'">
+    <input type="number" maxlength="100" id="scale" style="width: 90%; height: 5%;" autocomplete="off" min="0" value="1" onchange="document.getElementById('overlay').style.width = document.getElementById('scale').value+'px'"-->
     <br>
     <h2>Overlay Mode</h2>
     <input id="difference" type="checkbox" onchange="document.getElementById('overlay').style['mix-blend-mode'] = document.getElementById('difference').checked ? 'difference':'unset'"> Difference blend
@@ -39,7 +39,7 @@ document.getElementById('brushsize2').parentElement.children[10].insertAdjacentH
     <div id="rulerResult">Dimensions: undefined</div>
     <br>
 </div>`);
-document.getElementById('myCanvas').insertAdjacentHTML('afterend',`<img style="pointer-events: none; position: relative; top: -3240px; left: 0px; opacity: 0.5; image-rendering: pixelated; image-rendering: crisp-edges;" src="" id="overlay">`);
+//document.getElementById('myCanvas').insertAdjacentHTML('afterend',`<img style="pointer-events: none; position: relative; top: -3240px; left: 0px; opacity: 0.5; image-rendering: pixelated; image-rendering: crisp-edges;" src="" id="overlay">`);
 document.getElementById('myCanvas').insertAdjacentHTML('afterend',`<canvas width="5760" height="3240" style="pointer-events: none; position: absolute; top: 0px; left: 0px; image-rendering: pixelated; image-rendering: crisp-edges;" id="ruler">`);
 document.getElementById('myCanvas').insertAdjacentHTML('afterend',`<canvas id="cursor" width="40" height="40" style="display: none;">`);
 document.getElementById('logout').insertAdjacentHTML('afterend',`<br> <p style="color: white;">You're using bs2k's script.</p>`);
