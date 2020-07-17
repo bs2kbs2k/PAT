@@ -6,7 +6,7 @@
 // @include        https://pixelanarchy.online/*
 // @match          http://pixelanarchy.online/*
 // @match          https://pixelanarchy.online/*
-// @version        0.10.3
+// @version        0.10.4
 // ==/UserScript==
 
 //Inserts the controls
@@ -168,4 +168,6 @@ document.getElementById('myCanvas').addEventListener('contextmenu',function(e){
 })
 
 //grid svgshare quota workaround
-document.getElementsByClassName('grid')[0].src = 'https://github.com/bs2kbs2k/PAT/raw/master/grid.svg'
+setTimeout(function(){
+  document.getElementsByClassName('grid')[0].src = 'https://github.com/bs2kbs2k/PAT/raw/master/grid.svg'
+}, 1000);
