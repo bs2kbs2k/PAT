@@ -6,29 +6,17 @@
 // @include        https://pixelanarchy.online/*
 // @match          http://pixelanarchy.online/*
 // @match          https://pixelanarchy.online/*
-// @version        0.9.2
+// @version        0.10.0
 // ==/UserScript==
 
-document.getElementById('brushsize2').parentElement.children[10].insertAdjacentHTML('afterend',`
-<div style="color: white;">
+//Inserts the controls
+document.getElementById('overlaysummary').parentElement.parentElement.insertAdjacentHTML('afterend',`
+<br>
+<details style="color: white;">
+    <summary id="scriptsummary" style="outline: none;">Script Options</summary>
+    <br>
     <h2>Chat Height</h2>
     <input type="number" maxlength="100" id="height" style="width: 90%; height: 5%;" autocomplete="off" min="0" value="1" onchange="document.getElementById('messages').style.height = document.getElementById('height').value+'px'">
-    <!--h2>Overlay Opacity</h2>
-    <input type="range" min="1" max="100" value="50" class="slider" id="opacity" onchange="document.getElementById('overlay').style.opacity = document.getElementById('opacity').value/100">
-    <br>
-    <h2>Overlay Image</h2>
-    <input id="url" style="width: 90%; height: 5%;" autocomplete="off" onchange="document.getElementById('overlay').src = document.getElementById('url').value">
-    <input type="file" id="file" style="width: 90%; height: 5%;" accept="image/*" onchange="document.getElementById('overlay').src = window.URL.createObjectURL(document.getElementById('file').files[0])">
-    <br>
-    <h2>Overlay Position</h2>
-    <input type="number" maxlength="100" id="x" style="width: 90%; height: 5%;" autocomplete="off" min="0" value="0" step="1" max="5759" onchange="document.getElementById('overlay').style.left = document.getElementById('x').value+'px'">
-    <input type="number" maxlength="100" id="y" style="width: 90%; height: 5%;" autocomplete="off" min="0" value="0" step="1" max="3239" onchange="document.getElementById('overlay').style.top = document.getElementById('y').value-3240+'px'">
-    <br>
-    <h2>Overlay Width</h2>
-    <input type="number" maxlength="100" id="scale" style="width: 90%; height: 5%;" autocomplete="off" min="0" value="1" onchange="document.getElementById('overlay').style.width = document.getElementById('scale').value+'px'"-->
-    <br>
-    <h2>Overlay Mode</h2>
-    <input id="difference" type="checkbox" onchange="document.getElementById('overlay').style['mix-blend-mode'] = document.getElementById('difference').checked ? 'difference':'unset'"> Difference blend
     <br>
     <h2>Cursor Color</h2>
     <input id="cursorColor" type="checkbox"> Selected color
@@ -38,12 +26,30 @@ document.getElementById('brushsize2').parentElement.children[10].insertAdjacentH
     <br>
     <div id="rulerResult">Dimensions: undefined</div>
     <br>
-</div>`);
-//document.getElementById('myCanvas').insertAdjacentHTML('afterend',`<img style="pointer-events: none; position: relative; top: -3240px; left: 0px; opacity: 0.5; image-rendering: pixelated; image-rendering: crisp-edges;" src="" id="overlay">`);
+</details>`);
+
+//Inject additional overlay features
+document.getElementById('scaleImg').previousElementSibling.remove() //remove scale slider(1)
+document.getElementById('scaleImg').insertAdjacentHTML('afterend',`
+<h2>Overlay Width</h2>
+<input type="number" maxlength="100" id="scale" style="width: 90%; height: 5%;" autocomplete="off" min="0" value="1" onchange="document.getElementById('overlay').style.width = document.getElementById('scale').value+'px'">
+<br>
+<h2>Overlay Mode</h2>
+<input id="difference" type="checkbox" onchange="document.getElementById('overlay').style['mix-blend-mode'] = document.getElementById('difference').checked ? 'difference':'unset'"> Difference blend
+`);
+document.getElementById('scaleImg').remove() //remove scale slider(2)
+
+//Inject ruler canvas
 document.getElementById('myCanvas').insertAdjacentHTML('afterend',`<canvas width="5760" height="3240" style="pointer-events: none; position: absolute; top: 0px; left: 0px; image-rendering: pixelated; image-rendering: crisp-edges;" id="ruler">`);
+
+//Insert cursor canvas
 document.getElementById('myCanvas').insertAdjacentHTML('afterend',`<canvas id="cursor" width="40" height="40" style="display: none;">`);
+
+//Insert version notice
 document.getElementById('logout').insertAdjacentHTML('afterend',`<br> <p style="color: white;">You're using bs2k's script.</p>`);
 let pixelCtx = document.getElementById('cursor').getContext('2d');
+
+//cursor color(stolen from Budsterblue's script)
 pixelCtx.strokeStyle = "gray";
 pixelCtx.lineWidth = 2;
 pixelCtx.fillStyle = "#FFFFFF";
@@ -92,6 +98,8 @@ document.getElementById('cursorColor').addEventListener('change', (event) => {
   }
 });
 
+//ruler
+//ruler checkbox
 document.getElementById('rulerStart').addEventListener('change', (event) => {
   if (event.target.checked) {
     document.getElementById("ruler").style["pointer-events"] = "unset";
@@ -104,6 +112,7 @@ document.getElementById('rulerStart').addEventListener('change', (event) => {
   }
 });
 
+//ruler onclick
 document.getElementById('ruler').addEventListener('click', (event) => {
   coords = document.getElementById('coords').innerText.split(' ')
   event.preventDefault();
@@ -127,10 +136,12 @@ document.getElementById('ruler').addEventListener('click', (event) => {
   }
 });
 
-//horrible hack(s)
+//secondary color
+//TODO better solution
 window.secondColor = {style:{}};
 window.firstColor = {click:function(){}};
 
+//set secondary color
 [...document.getElementsByClassName('btnbelow')].forEach(function(elem){
   elem.addEventListener('contextmenu',function(e){
     e.preventDefault();
@@ -146,6 +157,7 @@ window.firstColor = {click:function(){}};
   })
 })
 
+//use secondary color
 document.getElementById('myCanvas').addEventListener('contextmenu',function(e){
   e.preventDefault();
   window.secondColor.click();
