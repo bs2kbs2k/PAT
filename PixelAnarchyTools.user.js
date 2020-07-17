@@ -6,7 +6,7 @@
 // @include        https://pixelanarchy.online/*
 // @match          http://pixelanarchy.online/*
 // @match          https://pixelanarchy.online/*
-// @version        0.10.2
+// @version        0.10.3
 // ==/UserScript==
 
 //Inserts the controls
@@ -47,9 +47,6 @@ document.getElementById('myCanvas').insertAdjacentHTML('afterend',`<canvas id="c
 //Insert version notice
 document.getElementById('logout').insertAdjacentHTML('afterend',`<br> <p style="color: white;">You're using bs2k's script.</p>`);
 let pixelCtx = document.getElementById('cursor').getContext('2d');
-
-//grid svgshare quota workaround
-document.getElementsByClassName('grid')[0].src = 'https://github.com/bs2kbs2k/PAT/raw/master/grid.svg'
 
 //cursor color(stolen from Budsterblue's script)
 pixelCtx.strokeStyle = "gray";
@@ -169,3 +166,6 @@ document.getElementById('myCanvas').addEventListener('contextmenu',function(e){
     window.secondColor.style["border-color"] = 'gray';
   },300)
 })
+
+//grid svgshare quota workaround
+document.getElementsByClassName('grid')[0].src = 'https://github.com/bs2kbs2k/PAT/raw/master/grid.svg'
