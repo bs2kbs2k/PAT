@@ -6,7 +6,7 @@
 // @include        https://pixelanarchy.online/*
 // @match          http://pixelanarchy.online/*
 // @match          https://pixelanarchy.online/*
-// @version        0.10.5
+// @version        0.11.0
 // ==/UserScript==
 
 //Inserts the controls
@@ -37,6 +37,19 @@ document.getElementById('scaleImg').insertAdjacentHTML('afterend',`
 <input id="difference" type="checkbox" onchange="document.getElementById('overlay').style['mix-blend-mode'] = document.getElementById('difference').checked ? 'difference':'unset'"> Difference blend
 `);
 document.getElementById('scaleImg').remove() //remove scale slider(2)
+
+//Inject sidebar toggle
+document.getElementById('sidenav').insertAdjacentHTML('afterend',`
+<div id="center" style="width: 250px; overflow: visible; height: 50px; margin: auto; position: absolute; top: 0; left: 0; bottom: 0; transition: all 1s;">
+    <svg width="15" height="50" style="float: right; color: gray; position: relative; left: 15px; z-index: 999;" id="toggle">
+        <rect x="0" y="0" width="15" height="50" style="fill:#2e2c2c;" rx="5" ry="5" />
+        <rect x="0" y="-10" width="10" height="100" style="fill:#2e2c2c;" rx="5" ry="5" />
+        <polygon points="10,20 10,30 4,25" style="fill:#fff;" id="triangle" />
+    </svg>
+</div>
+`);
+document.getElementById('sidenav').style.transition = "all 1s";
+document.getElementsByClassName('pallete')[0].style.transition = "all 1s";
 
 //Inject ruler canvas
 document.getElementById('myCanvas').insertAdjacentHTML('afterend',`<canvas width="5760" height="3240" style="pointer-events: none; position: absolute; top: 0px; left: 0px; image-rendering: pixelated; image-rendering: crisp-edges;" id="ruler">`);
@@ -166,6 +179,24 @@ document.getElementById('myCanvas').addEventListener('contextmenu',function(e){
     window.secondColor.style["border-color"] = 'gray';
   },300)
 })
+
+//sidebar toggle
+window.sidebarShown = true;
+document.getElementById('toggle').addEventListener('click',function(e){
+  if(window.sidebarShown){
+    document.getElementById('sidenav').style.left = "-250px";
+    document.getElementsByClassName('pallete')[0].style["margin-left"] = "0";
+    document.getElementById('center').style.left = "-250px";
+    document.getElementById('triangle').transform = "rotate(180 7 25)";
+    window.sidebarShown = false;
+  } else {
+    document.getElementById('sidenav').style.left = "0";
+    document.getElementsByClassName('pallete')[0].style["margin-left"] = "250px";
+    document.getElementById('center').style.left = "0";
+    document.getElementById('triangle').transform = undefined;
+    window.sidebarShown = true;
+  }
+});
 
 //grid svgshare quota workaround
 setTimeout(function(){
