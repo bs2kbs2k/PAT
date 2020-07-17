@@ -6,7 +6,7 @@
 // @include        https://pixelanarchy.online/*
 // @match          http://pixelanarchy.online/*
 // @match          https://pixelanarchy.online/*
-// @version        0.10.0
+// @version        0.10.1
 // ==/UserScript==
 
 //Inserts the controls
@@ -14,7 +14,6 @@ document.getElementById('overlaysummary').parentElement.parentElement.insertAdja
 <br>
 <details style="color: white;">
     <summary id="scriptsummary" style="outline: none;">Script Options</summary>
-    <br>
     <h2>Chat Height</h2>
     <input type="number" maxlength="100" id="height" style="width: 90%; height: 5%;" autocomplete="off" min="0" value="1" onchange="document.getElementById('messages').style.height = document.getElementById('height').value+'px'">
     <br>
