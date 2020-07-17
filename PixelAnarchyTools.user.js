@@ -6,7 +6,7 @@
 // @include        https://pixelanarchy.online/*
 // @match          http://pixelanarchy.online/*
 // @match          https://pixelanarchy.online/*
-// @version        0.10.4
+// @version        0.10.5
 // ==/UserScript==
 
 //Inserts the controls
@@ -30,10 +30,10 @@ document.getElementById('overlaysummary').parentElement.parentElement.insertAdja
 //Inject additional overlay features
 document.getElementById('scaleImg').previousElementSibling.remove() //remove scale slider(1)
 document.getElementById('scaleImg').insertAdjacentHTML('afterend',`
-<h2>Overlay Width</h2>
+<h2>Width</h2>
 <input type="number" maxlength="100" id="scale" style="width: 90%; height: 5%;" autocomplete="off" min="0" value="1" onchange="document.getElementById('overlay').style.width = document.getElementById('scale').value+'px'">
 <br>
-<h2>Overlay Mode</h2>
+<h2>Mode</h2>
 <input id="difference" type="checkbox" onchange="document.getElementById('overlay').style['mix-blend-mode'] = document.getElementById('difference').checked ? 'difference':'unset'"> Difference blend
 `);
 document.getElementById('scaleImg').remove() //remove scale slider(2)
