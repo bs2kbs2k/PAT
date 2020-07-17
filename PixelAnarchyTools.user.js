@@ -6,7 +6,7 @@
 // @include        https://pixelanarchy.online/*
 // @match          http://pixelanarchy.online/*
 // @match          https://pixelanarchy.online/*
-// @version        0.11.0
+// @version        0.11.1
 // ==/UserScript==
 
 //Inserts the controls
@@ -187,13 +187,11 @@ document.getElementById('toggle').addEventListener('click',function(e){
     document.getElementById('sidenav').style.left = "-250px";
     document.getElementsByClassName('pallete')[0].style["margin-left"] = "0";
     document.getElementById('center').style.left = "-250px";
-    document.getElementById('triangle').transform = "rotate(180 7 25)";
     window.sidebarShown = false;
   } else {
     document.getElementById('sidenav').style.left = "0";
     document.getElementsByClassName('pallete')[0].style["margin-left"] = "250px";
     document.getElementById('center').style.left = "0";
-    document.getElementById('triangle').transform = undefined;
     window.sidebarShown = true;
   }
 });
