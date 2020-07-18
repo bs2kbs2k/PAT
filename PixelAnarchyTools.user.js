@@ -6,7 +6,7 @@
 // @include        https://pixelanarchy.online/*
 // @match          http://pixelanarchy.online/*
 // @match          https://pixelanarchy.online/*
-// @version        0.11.1
+// @version        0.11.2
 // ==/UserScript==
 
 //Inserts the controls
@@ -41,10 +41,10 @@ document.getElementById('scaleImg').remove() //remove scale slider(2)
 //Inject sidebar toggle
 document.getElementById('sidenav').insertAdjacentHTML('afterend',`
 <div id="center" style="width: 250px; overflow: visible; height: 50px; margin: auto; position: absolute; top: 0; left: 0; bottom: 0; transition: all 1s;">
-    <svg width="15" height="50" style="float: right; color: gray; position: relative; left: 15px; z-index: 999;" id="toggle">
+    <svg width="15" height="50" style="float: right; position: relative; left: 15px; z-index: 999;" id="toggle">
         <rect x="0" y="0" width="15" height="50" style="fill:#2e2c2c;" rx="5" ry="5" />
         <rect x="0" y="-10" width="10" height="100" style="fill:#2e2c2c;" rx="5" ry="5" />
-        <polygon points="10,20 10,30 4,25" style="fill:#fff;" id="triangle" />
+        <polygon points="10,20 10,30 4,25" style="fill:#fff;"/>
     </svg>
 </div>
 `);
