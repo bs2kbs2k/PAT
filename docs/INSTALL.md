@@ -1,4 +1,4 @@
-# Installing the Script
+# Installing the script
 ## Step 1: Installing Violentmonkey
 
 Click the button for one-click install:
@@ -7,8 +7,10 @@ Click the button for one-click install:
 
 [Manual install(if the button doesn't work)](https://violentmonkey.github.io/get-it/)
 
-## Step 2: Installing the Script
+## Step 2: Installing the script
 click on one of the link below and click "Confirm installation".
+
+![](https://bs2kbs2k.github.io/PAT/install.png)
 
 [bs2k's Script](https://github.com/bs2kbs2k/PAT/raw/master/PixelAnarchyTools.user.js)  
 [Budsterblue's Script](https://github.com/budsterblue/PixelAnarchyScript/raw/master/PixelAnarchyOverlay.user.js)
@@ -16,3 +18,15 @@ click on one of the link below and click "Confirm installation".
 <p style="color: red;">
 WARNING: Do NOT trust scripts blindly. Always review scripts before installing.
 </p>
+
+# Updating the script
+## Step 1: Open the dashboard
+1. Click on the Violentmonkey icon
+1. Click the gear icon
+
+![](https://bs2kbs2k.github.io/PAT/settings.png)
+
+## Step 2: Updatinf the script
+Click on the update icon to update
+
+![](https://bs2kbs2k.github.io/PAT/update.png)
