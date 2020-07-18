@@ -1,4 +1,4 @@
-install# Installing the script
+# Installing the script
 ## Step 1: Installing Violentmonkey
 
 Click the button for one-click install:
