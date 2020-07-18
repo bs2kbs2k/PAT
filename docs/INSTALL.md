@@ -1,4 +1,4 @@
-# Installing the script
+install# Installing the script
 ## Step 1: Installing Violentmonkey
 
 Click the button for one-click install:
@@ -26,7 +26,7 @@ WARNING: Do NOT trust scripts blindly. Always review scripts before installing.
 
 ![](https://bs2kbs2k.github.io/PAT/settings.png)
 
-## Step 2: Updatinf the script
+## Step 2: Updating the script
 Click on the update icon to update
 
 ![](https://bs2kbs2k.github.io/PAT/update.png)
