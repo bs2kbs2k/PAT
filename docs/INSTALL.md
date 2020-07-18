@@ -30,3 +30,6 @@ WARNING: Do NOT trust scripts blindly. Always review scripts before installing.
 Click on the update icon to update
 
 ![](https://bs2kbs2k.github.io/PAT/update.png)
+
+
+[also check out budsterblue's guide!](https://bs2kbs2k.github.io/PAT/BudsterblueGuide.png)
