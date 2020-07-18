@@ -12,4 +12,6 @@ click on one of the link below and click "Confirm installation".
 [bs2k's Script](https://github.com/bs2kbs2k/PAT/raw/master/PixelAnarchyTools.user.js)  
 [Budsterblue's Script](https://github.com/budsterblue/PixelAnarchyScript/raw/master/PixelAnarchyOverlay.user.js)
 
-<p style="color: red;">WARNING: Do __NOT__ trust scripts blindly. Always review scripts before installing.</p>
+<p style="color: red;">
+WARNING: Do **NOT** trust scripts blindly. Always review scripts before installing.
+</p>
