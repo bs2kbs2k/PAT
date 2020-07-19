@@ -6,8 +6,10 @@
 // @include        https://pixelanarchy.online/*
 // @match          http://pixelanarchy.online/*
 // @match          https://pixelanarchy.online/*
-// @version        0.11.2
+// @author         bs2k
+// @version        0.12.0
 // ==/UserScript==
+
 
 //Inserts the controls
 document.getElementById('overlaysummary').parentElement.parentElement.insertAdjacentHTML('afterend',`
@@ -25,6 +27,9 @@ document.getElementById('overlaysummary').parentElement.parentElement.insertAdja
     <br>
     <div id="rulerResult">Dimensions: undefined</div>
     <br>
+    <h2>Palette Switch</h2>
+    <input id="paletteSwitch" type="checkbox"> Arrow keys
+    <br>
 </details>`);
 
 //Inject additional overlay features
@@ -35,6 +40,9 @@ document.getElementById('scaleImg').insertAdjacentHTML('afterend',`
 <br>
 <h2>Mode</h2>
 <input id="difference" type="checkbox" onchange="document.getElementById('overlay').style['mix-blend-mode'] = document.getElementById('difference').checked ? 'difference':'unset'"> Difference blend
+<br>
+<h2>Opacity Animation</h2>
+<input id="opacityFade" type="checkbox" onchange="document.getElementById('overlay').style['animation'] = document.getElementById('opacityFade').checked ? '2s fade infinite linear':'unset'"> Fade animation
 `);
 document.getElementById('scaleImg').remove() //remove scale slider(2)
 
@@ -195,6 +203,56 @@ document.getElementById('toggle').addEventListener('click',function(e){
     window.sidebarShown = true;
   }
 });
+
+//Opacity Fade
+//https://stackoverflow.com/a/33176845/13016663
+function GM_addStyle(css) {
+  const style = document.getElementById("GM_addStyleBy8626") || (function() {
+    const style = document.createElement('style');
+    style.type = 'text/css';
+    style.id = "GM_addStyleBy8626";
+    document.head.appendChild(style);
+    return style;
+  })();
+  const sheet = style.sheet;
+  sheet.insertRule(css, (sheet.rules || sheet.cssRules || []).length);
+}
+
+GM_addStyle(`
+@keyframes fade{
+  0%{
+    opacity: 0.3;
+  }
+  50%{
+    opacity: 0.8;
+  }
+  100%{
+    opacity: 0.3;
+  }
+}
+`);
+
+//URL placeholder(from budsterblue's script)
+document.getElementById("urlSelector").placeholder = "https://example.com/image.png";
+
+//Pallete switch(also from budsterblue)
+document.getElementById('myCanvas').setAttribute('tabindex',0)
+window.palleteIndex = 0;
+document.getElementById('myCanvas').addEventListener ("keydown", function (e) {
+	if (document.getElementById('paletteSwitch').checked) {
+    		if (e.which === 37) {
+			e.preventDefault();
+			if (window.palleteIndex == 0) { window.palleteIndex = 28; }
+			else { window.palleteIndex -= 1; }
+			document.getElementsByClassName('btnbelow')[window.palleteIndex].click();
+    		} else if (e.which == 39) {
+			e.preventDefault();
+			if (window.palleteIndex == 28) { window.palleteIndex = 0; }
+			else { window.palleteIndex += 1; }
+			document.getElementsByClassName('btnbelow')[window.palleteIndex].click();
+		}
+	}
+} );
 
 //grid svgshare quota workaround
 setTimeout(function(){
