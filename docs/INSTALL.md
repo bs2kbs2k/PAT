@@ -12,8 +12,8 @@ click on one of the link below and click "Confirm installation".
 
 ![](https://bs2kbs2k.github.io/PAT/install.png)
 
-![[](https://github.com/bs2kbs2k/PAT/raw/master/PixelAnarchyTools.user.js)](https://img.shields.io/badge/install-mine-blue?style=for-the-badge)  
-![[](https://github.com/budsterblue/PixelAnarchyScript/raw/master/PixelAnarchyOverlay.user.js)](https://img.shields.io/badge/install-budsterblue's-blue?style=for-the-badge)
+[![](https://github.com/bs2kbs2k/PAT/raw/master/PixelAnarchyTools.user.js)](https://img.shields.io/badge/install-mine-blue?style=for-the-badge)](https://github.com/bs2kbs2k/PAT/raw/master/PixelAnarchyTools.user.js)  
+[![](https://img.shields.io/badge/install-budsterblue's-blue?style=for-the-badge)](https://github.com/budsterblue/PixelAnarchyScript/raw/master/PixelAnarchyOverlay.user.js)
 
 <p style="color: red;">
 WARNING: Do NOT trust scripts blindly. Always review scripts before installing.
@@ -32,4 +32,4 @@ Click on the update icon to update
 ![](https://bs2kbs2k.github.io/PAT/update.png)
 
 
-![[also check out budsterblue's guide!](https://bs2kbs2k.github.io/PAT/BudsterblueGuide.png)](https://img.shields.io/badge/budsterblue's-guide-blue?style=for-the-badge)
+[![also check out budsterblue's guide!](https://img.shields.io/badge/budsterblue's-guide-blue?style=for-the-badge)](https://bs2kbs2k.github.io/PAT/BudsterblueGuide.png)
