@@ -12,7 +12,7 @@ click on one of the link below and click "Confirm installation".
 
 ![](https://bs2kbs2k.github.io/PAT/install.png)
 
-[![](https://github.com/bs2kbs2k/PAT/raw/master/PixelAnarchyTools.user.js)](https://img.shields.io/badge/install-mine-blue?style=for-the-badge)](https://github.com/bs2kbs2k/PAT/raw/master/PixelAnarchyTools.user.js)  
+[![](https://img.shields.io/badge/install-mine-blue?style=for-the-badge)](https://github.com/bs2kbs2k/PAT/raw/master/PixelAnarchyTools.user.js)  
 [![](https://img.shields.io/badge/install-budsterblue's-blue?style=for-the-badge)](https://github.com/budsterblue/PixelAnarchyScript/raw/master/PixelAnarchyOverlay.user.js)
 
 <p style="color: red;">
