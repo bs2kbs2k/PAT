@@ -7,7 +7,7 @@
 // @match          http://pixelanarchy.online/*
 // @match          https://pixelanarchy.online/*
 // @author         bs2k
-// @version        0.12.0
+// @version        0.12.1
 // ==/UserScript==
 
 
@@ -257,4 +257,4 @@ document.getElementById('myCanvas').addEventListener ("keydown", function (e) {
 //grid svgshare quota workaround
 setTimeout(function(){
   document.getElementsByClassName('grid')[0].src = 'https://github.com/bs2kbs2k/PAT/raw/master/grid.svg'
-}, 1000);
+}, 1500);
