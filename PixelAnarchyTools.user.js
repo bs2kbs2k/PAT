@@ -1,13 +1,13 @@
 // ==UserScript==
 // @name           Pixel Anarchy Tools
 // @namespace      pixel_anarchy_tools
-// @description    An Image overlay for the site Pixel Anarchy Online to make fixing griefed areas easier
+// @description    Misc tweaks&stuff for PAO
 // @include        http://*.pixelanarchy.online/*
 // @include        https://pixelanarchy.online/*
 // @match          http://pixelanarchy.online/*
 // @match          https://pixelanarchy.online/*
 // @author         bs2k
-// @version        0.12.1
+// @version        0.12.2
 // ==/UserScript==
 
 
@@ -46,19 +46,6 @@ document.getElementById('scaleImg').insertAdjacentHTML('afterend',`
 `);
 document.getElementById('scaleImg').remove() //remove scale slider(2)
 
-//Inject sidebar toggle
-document.getElementById('sidenav').insertAdjacentHTML('afterend',`
-<div id="center" style="width: 250px; overflow: visible; height: 50px; margin: auto; position: absolute; top: 0; left: 0; bottom: 0; transition: all 1s;">
-    <svg width="15" height="50" style="float: right; position: relative; left: 15px; z-index: 999;" id="toggle">
-        <rect x="0" y="0" width="15" height="50" style="fill:#2e2c2c;" rx="5" ry="5" />
-        <rect x="0" y="-10" width="10" height="100" style="fill:#2e2c2c;" rx="5" ry="5" />
-        <polygon points="10,20 10,30 4,25" style="fill:#fff;"/>
-    </svg>
-</div>
-`);
-document.getElementById('sidenav').style.transition = "all 1s";
-document.getElementsByClassName('pallete')[0].style.transition = "all 1s";
-
 //Inject ruler canvas
 document.getElementById('myCanvas').insertAdjacentHTML('afterend',`<canvas width="5760" height="3240" style="pointer-events: none; position: absolute; top: 0px; left: 0px; image-rendering: pixelated; image-rendering: crisp-edges;" id="ruler">`);
 
@@ -67,9 +54,9 @@ document.getElementById('myCanvas').insertAdjacentHTML('afterend',`<canvas id="c
 
 //Insert version notice
 document.getElementById('logout').insertAdjacentHTML('afterend',`<br> <p style="color: white;">You're using bs2k's script.</p>`);
-let pixelCtx = document.getElementById('cursor').getContext('2d');
 
 //cursor color(stolen from Budsterblue's script)
+let pixelCtx = document.getElementById('cursor').getContext('2d');
 pixelCtx.strokeStyle = "gray";
 pixelCtx.lineWidth = 2;
 pixelCtx.fillStyle = "#FFFFFF";
@@ -237,6 +224,11 @@ document.getElementById("urlSelector").placeholder = "https://example.com/image.
 
 //Pallete switch(also from budsterblue)
 document.getElementById('myCanvas').setAttribute('tabindex',0)
+GM_addStyle(`
+#myCanvas:focus{
+    outline: none;
+}
+`); //outlinefix
 window.palleteIndex = 0;
 document.getElementById('myCanvas').addEventListener ("keydown", function (e) {
 	if (document.getElementById('paletteSwitch').checked) {
