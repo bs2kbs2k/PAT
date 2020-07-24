@@ -7,7 +7,7 @@
 // @match          http://pixelanarchy.online/*
 // @match          https://pixelanarchy.online/*
 // @author         bs2k
-// @version        0.12.2
+// @version        0.13.0
 // ==/UserScript==
 
 
@@ -36,13 +36,18 @@ document.getElementById('overlaysummary').parentElement.parentElement.insertAdja
 document.getElementById('scaleImg').previousElementSibling.remove() //remove scale slider(1)
 document.getElementById('scaleImg').insertAdjacentHTML('afterend',`
 <h2>Width</h2>
-<input type="number" maxlength="100" id="scale" style="width: 90%; height: 5%;" autocomplete="off" min="0" value="1" onchange="document.getElementById('overlay').style.width = document.getElementById('scale').value+'px'">
+<input type="number" maxlength="100" id="scale" style="width: 90%; height: 5%;" autocomplete="off" min="0" onchange="document.getElementById('overlay').style.width = document.getElementById('scale').value+'px'">
+<button id="resetScale" style="width: 90%; height: 5%;" onclick="document.getElementById('overlay').style.width = 'unset'">Reset scale</button>
 <br>
 <h2>Mode</h2>
 <input id="difference" type="checkbox" onchange="document.getElementById('overlay').style['mix-blend-mode'] = document.getElementById('difference').checked ? 'difference':'unset'"> Difference blend
 <br>
 <h2>Opacity Animation</h2>
 <input id="opacityFade" type="checkbox" onchange="document.getElementById('overlay').style['animation'] = document.getElementById('opacityFade').checked ? '2s fade infinite linear':'unset'"> Fade animation
+<br>
+<h2>Import/Export Settings</h2>
+<button id="export" style="width: 90%; height: 5%;">Export settings</button>
+<button id="import" style="width: 90%; height: 5%;">Import settings</button>
 `);
 document.getElementById('scaleImg').remove() //remove scale slider(2)
 
@@ -230,7 +235,7 @@ GM_addStyle(`
 }
 `); //outlinefix
 window.palleteIndex = 0;
-document.getElementById('myCanvas').addEventListener ("keydown", function (e) {
+document.getElementById('myCanvas').addEventListener("keydown", function (e) {
 	if (document.getElementById('paletteSwitch').checked) {
     		if (e.which === 37) {
 			e.preventDefault();
@@ -245,6 +250,30 @@ document.getElementById('myCanvas').addEventListener ("keydown", function (e) {
 		}
 	}
 } );
+
+//Export/Import settings
+document.getElementById('export').addEventListener("click", function() {
+    let data = {};
+    [...document.getElementsByTagName('details')[0].children]
+        .filter(e => e.nodeName == "INPUT")
+        .filter(e => e.type == "number")
+        .forEach(e => data[e.id] = e.value - 0)
+    data['urlSelector'] = document.getElementById('overlay').src;
+    if (document.getElementById('overlay').src.startsWith("blob:")) {
+        data['urlSelector'] = 'Local file';
+        Notiflix.Confirm.Show('Warning', 'You\'re using a local file for the overlay. The local file won\'t be included in the overlay and it must be shared separately. Do you want to export anyways?', 'Yes', 'No', e => prompt('Copy the exported config', JSON.stringify(data)), e => Notiflix.Notify.Failure('Export aborted'));
+    } else {
+        prompt('Copy the exported config', JSON.stringify(data));
+    }
+});
+document.getElementById('import').addEventListener("click", function() {
+    JSON.parse(prompt('Paste the exported config here'));
+    for (var key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            document.getElementById(key).value = obj[key];
+        }
+    }
+});
 
 //grid svgshare quota workaround
 setTimeout(function(){
